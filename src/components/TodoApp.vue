@@ -1,24 +1,27 @@
-<template>
-  <section class="todoapp">
-    <header class="header">
-      <h1>todos</h1>
-      <input class="new-todo" v-model="newTodoTitle" @keyup.enter="createTodo()" placeholder="What needs to be done?" autofocus>
-    </header>
-    <!-- This section should be hidden by default and shown when there are todos -->
-    <section class="main" v-if="todos.length">
-      <input class="toggle-all" type="checkbox">
-      <label for="toggle-all" @click="toggleAll">Mark all as complete</label>
-      <ul class="todo-list">
-        <!-- These are here just to show the structure of the list items -->
-        <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-        <div v-for="(todo, index) in todosInView">
-          <todo-item :todo="todo" @toggleCompleted="toggleCompleted(index)" @removeSelf="removeTodo(index)" />
-        </div>
-      </ul>
-    </section>
-    <!-- This footer should hidden by default and shown when there are todos -->
-    <todo-footer v-if="todos.length" :itemsLeft="remaining.length" :currentView="currentView" :clearCompleted="clearCompleted" />
-  </section>
+<template lang="pug">
+  section.todoapp
+    header.header
+      h1 todos
+      input.new-todo(
+        @keyup.enter="createTodo()"
+        autofocus
+        v-model="newTodoTitle"
+        placeholder="What needs to be done?")
+    section.main(v-if="todos.length")
+      input.toggle-all(type="checkbox")
+      label(for="toggle-all"
+        @click="toggleAll") Mark all as complete
+      ul.todo-list
+        div(v-for="(todo, index) in todosInView")
+          todo-item(
+            :todo="todo"
+            @removeSelf="removeTodo(index)"
+            @toggleCompleted="toggleCompleted(index)")
+    todo-footer(
+      v-if="todos.length"
+      :itemsLeft="remaining.length"
+      :currentView="currentView"
+      :clearCompleted="clearCompleted")
 </template>
 
 <script lang="ts">
