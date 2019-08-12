@@ -8,7 +8,6 @@
       button.destroy(
         @click="$emit('removeSelf')")
     input.edit(value="Create a TodoMVC template")
-  </li>
 </template>
 
 <script lang="ts">

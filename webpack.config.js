@@ -2,6 +2,7 @@
 
 var path = require('path')
 var webpack = require('webpack')
+var VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: './src/main.ts',
@@ -12,6 +13,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -43,6 +48,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new VueLoaderPlugin(),
+  ],
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
