@@ -7,6 +7,9 @@
     "name": "Daniel Rosenwasser",
     "url": "https://github.com/DanielRosenwasser"
   },
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "todomvc-app-css": "^2.1.0",
@@ -22,6 +25,8 @@
     "vue-loader": "^12.0.0",
     "vue-template-compiler": "2.2.1",
     "vue-ts-loader": "^0.0.3",
-    "webpack": "^2.4.1"
+    "webpack": "^2.4.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "2.x.x"
   }
 }
